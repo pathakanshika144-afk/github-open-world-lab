@@ -1,0 +1,11 @@
+name: Bug report
+description: Report a reproducible problem.
+body:
+  - type: input
+    id: summary
+    attributes: {label: Problem summary}
+    validations: {required: true}
+  - type: textarea
+    id: reproduction
+    attributes: {label: Reproduction steps}
+    validations: {required: true}

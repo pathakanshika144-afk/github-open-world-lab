@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security reporting policy
+    url: https://github.com/pathakanshika144-afk/github-open-world-lab/blob/main/SECURITY.md
+    about: Please follow the private reporting guidance for security concerns.
