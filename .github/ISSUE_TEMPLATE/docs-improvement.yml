@@ -1,0 +1,7 @@
+name: Documentation improvement
+description: Suggest a documentation change.
+body:
+  - type: input
+    id: page
+    attributes: {label: Target page}
+    validations: {required: true}
