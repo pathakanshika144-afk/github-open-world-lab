@@ -7,3 +7,7 @@ The project intentionally keeps its technology simple: HTML, CSS, JavaScript, an
 ## What it does
 
 The checklist loads learning tasks from `data/tasks.json`, displays their category, and lets each visitor keep completion choices in their own browser.
+
+## Quick preview
+
+Run `python3 -m http.server 8000` from the repository root, then open `http://localhost:8000` in a browser.
