@@ -8,3 +8,7 @@ Open World Checklist has no package installation step.
 4. Run `python3 scripts/validate_tasks.py data/tasks.json` before changing task data.
 
 To check the test suite, run `python3 -m unittest tests/test_validate_tasks.py`.
+
+## Keyboard verification
+
+Use Tab to move through the filter buttons and task checkboxes. Every focused control should display a high-contrast orange outline before it is activated with Enter or Space.
