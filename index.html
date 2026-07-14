@@ -10,6 +10,11 @@
     <main class="page-shell">
       <h1>Open World Checklist</h1>
       <p>Learn Git and GitHub by completing small, practical tasks.</p>
+      <div class="filters" role="group" aria-label="Task filters">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="incomplete" aria-pressed="false">Incomplete</button>
+        <button type="button" data-filter="completed" aria-pressed="false">Completed</button>
+      </div>
       <p id="status-message" role="status">Loading checklist…</p>
       <ul id="task-list" class="task-list" aria-label="Learning tasks"></ul>
     </main>

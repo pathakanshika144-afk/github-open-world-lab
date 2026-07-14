@@ -1,6 +1,9 @@
 const taskList = document.querySelector("#task-list");
 const statusMessage = document.querySelector("#status-message");
+const filterButtons = document.querySelectorAll("[data-filter]");
 const completedStorageKey = "open-world-checklist:completed";
+let activeFilter = "all";
+let loadedTasks = [];
 
 function getCompletedIds() {
   try {
@@ -46,12 +49,37 @@ function createTaskItem(task, completedIds) {
 function renderTasks(tasks) {
   taskList.innerHTML = "";
   const completedIds = getCompletedIds();
+  const visibleTasks = tasks.filter((task) => {
+    const isCompleted = completedIds.has(task.id) || task.completed;
+    return activeFilter === "all" || (activeFilter === "completed" ? isCompleted : !isCompleted);
+  });
 
-  for (const task of tasks) {
+  for (const task of visibleTasks) {
     taskList.append(createTaskItem(task, completedIds));
   }
 
-  statusMessage.textContent = `${tasks.length} tasks ready to explore.`;
+  if (visibleTasks.length === 0) {
+    const emptyState = document.createElement("li");
+    emptyState.className = "empty-state";
+    emptyState.textContent = "No tasks match this filter yet. Try another view.";
+    taskList.append(emptyState);
+    statusMessage.textContent = "No tasks match the selected filter.";
+    return;
+  }
+
+  statusMessage.textContent = `${visibleTasks.length} tasks ready to explore.`;
+}
+
+function setupFilters() {
+  for (const button of filterButtons) {
+    button.addEventListener("click", () => {
+      activeFilter = button.dataset.filter;
+      for (const filterButton of filterButtons) {
+        filterButton.setAttribute("aria-pressed", String(filterButton === button));
+      }
+      renderTasks(loadedTasks);
+    });
+  }
 }
 
 async function loadTasks() {
@@ -60,7 +88,9 @@ async function loadTasks() {
     if (!response.ok) {
       throw new Error(`Could not load tasks: ${response.status}`);
     }
-    renderTasks(await response.json());
+    loadedTasks = await response.json();
+    setupFilters();
+    renderTasks(loadedTasks);
   } catch (error) {
     statusMessage.textContent = "The checklist could not be loaded. Please try again later.";
     console.error(error);
