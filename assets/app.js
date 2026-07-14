@@ -58,6 +58,15 @@ function renderTasks(tasks) {
     taskList.append(createTaskItem(task, completedIds));
   }
 
+  if (visibleTasks.length === 0) {
+    const emptyState = document.createElement("li");
+    emptyState.className = "empty-state";
+    emptyState.textContent = "No tasks match this filter yet. Try another view.";
+    taskList.append(emptyState);
+    statusMessage.textContent = "No tasks match the selected filter.";
+    return;
+  }
+
   statusMessage.textContent = `${visibleTasks.length} tasks ready to explore.`;
 }
 
