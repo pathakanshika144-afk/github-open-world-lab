@@ -20,3 +20,52 @@ body {
 h1 {
   margin: 0 0 0.75rem;
 }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+button,
+input[type="checkbox"] {
+  accent-color: #0969da;
+}
+
+button:focus-visible,
+input[type="checkbox"]:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 3px;
+}
+
+.task-list {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.task-item {
+  padding: 1rem;
+  border: 1px solid #d0d7de;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.task-item label {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+}
+
+.task-category {
+  grid-column: 2;
+  color: #57606a;
+  font-size: 0.875rem;
+}
+
+.is-completed strong {
+  text-decoration: line-through;
+}
