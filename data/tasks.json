@@ -1,0 +1,20 @@
+[
+  {
+    "id": "create-repository",
+    "title": "Create your first repository",
+    "category": "Getting started",
+    "completed": false
+  },
+  {
+    "id": "make-a-commit",
+    "title": "Make a meaningful commit",
+    "category": "Core Git",
+    "completed": false
+  },
+  {
+    "id": "open-a-pull-request",
+    "title": "Open a pull request",
+    "category": "Collaboration",
+    "completed": false
+  }
+]
