@@ -34,6 +34,10 @@ function createTaskItem(task, completedIds) {
     }
     saveCompletedIds(completedIds);
     item.classList.toggle("is-completed", checkbox.checked);
+    // 勾选改变完成状态，筛选视图需重新过滤（issue #12）；All 视图跳过以保留键盘焦点
+    if (activeFilter !== "all") {
+      renderTasks(loadedTasks);
+    }
   });
   const title = document.createElement("strong");
   title.textContent = task.title;
